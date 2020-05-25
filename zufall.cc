@@ -5,6 +5,7 @@
 using namespace std;
 
 static int I=2;
+static ofstream pi("pi.txt");
 
 double zufall(int a,int c,int m){
 
@@ -20,11 +21,10 @@ void verteilung(int a,int c,int m,int n){
   double v= p*(1-p)*n;
   
   for (int u=0; u<n ; ++u){
-  if ( pow(zufall(a,c,m),2) + pow(zufall(a,c,m),2) <1) {Kreis++;}
-  }
+  if ( pow(zufall(a,c,m),2) + pow(zufall(a,c,m),2) <1) {Kreis++;}}
   
   cout << p*n << " " << v << " " << Kreis << " " << (double)Kreis/(double)n*4 << " " << 4*sqrt(v)/n << endl;
-  
+  pi << p*n << " " << v << " " << Kreis << " " << (double)Kreis/(double)n*4 << " " << 4*sqrt(v)/n << endl;
   return;
 
 }
@@ -38,4 +38,5 @@ for (int d : n){
   verteilung( 205, 29573, 1339968,d);
 }
 
+pi.close();
 }
